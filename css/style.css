@@ -21,10 +21,92 @@ a:hover {
   text-decoration: underline;
 }
 
+
+.all-products {
+  margin-top: 2.75em;
+}
+
 .actions {
   background-color: var(--midground);
   color: var(--background);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
+
+.navbar {
+  display: grid;
+  grid-template-columns: 3em auto 3em;
+  grid-template-areas: 
+    "hamb logo cart"
+    "srch srch srch"
+    "menu menu menu";
+}
+
+.hamb {
+  grid-area: hamb;
+  /* justify-self: start; */
+  background-color: transparent;
+  color: var(--background);
+  border: none;
+}
+.logo {
+  grid-area: logo;
+  justify-self: center;
+}
+.cart {
+  grid-area: cart;
+  /* justify-self: end; */
+  background-color: transparent;
+  color: var(--background);
+  border: none;
+}
+.srch {
+  grid-area: srch;
+  background-color: var(--subtext);
+  border: none;
+  margin: 0 1em;
+  border-radius: 0.25em;
+  color: var(--background);
+  padding: 0.5em;
+  padding-left: 2em;
+  background-image: url(/img/search.svg);
+  background-repeat: no-repeat;
+  background-position: 0.5em -0.25em;
+}
+.srch::placeholder {
+  color: #aaa;
+}
+
+.menu {
+  grid-area: menu;
+  padding: 0 1em;
+}
+
+.menu li {
+  border-bottom: 1px solid var(--subtext);
+}
+.menu a {
+  color: var(--background);
+  display: block;
+  text-align: center;
+  line-height: 3;
+}
+.menu a:hover {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.toggle {
+  display: none;
+}
+
+
+
+
+
 
 .product {
   text-align: center;
@@ -83,14 +165,48 @@ a:hover {
 
 
 @media screen and (min-width: 900px) {
-  .actions {
+  /* .actions {
     background-color: lightgreen;
-  }
+  } */
 
   .all-products {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+
+  .navbar {
+    grid-template-columns: 3em auto 3em 3em;
+    grid-template-areas: "logo menu srch cart";
+  }
+
+  .menu {
+    text-align: right;
+  }
+  .menu li {
+    display: inline-block;
+    border-bottom: none;
+  }
+  .menu a {
+    border-bottom: none;
+    padding: 0 1em;
+  }
+  .srch {
+    background-color: transparent;
+    background-position-y: 0.125em;
+  }
+  .searching {
+    width: 10em;
+    background-color: #6e6e6e;
+  }
+
+  .hamb {
+    display: none;
+  }
+
+  .toggle {
+    display: block;
+  }
+
 }
 
 @media screen and (min-width: 1400px) {
